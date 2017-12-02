@@ -9,6 +9,7 @@
           <ul>
             <li v-for="(item,index) in product.list" :key="index">
               <a :href="item.url">{{ item.name }}</a>
+              <!-- <router-link :to="item.url">{{ item.name }}</router-link> -->
               <span v-if="item.hot" class="hot-tag">HOT</span>
             </li>
           </ul>
@@ -16,14 +17,14 @@
         </div>
         </template>
       </div>
-      <div class="index-left-block lastest-news">
+      <!-- <div class="index-left-block lastest-news">
         <h2>最新消息</h2>
         <ul>
           <li v-for="(item,index) in newsList" :key="index">
             <a :href="item.url" class="new-item">{{ item.title }}</a>
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
     <!-- <div class="index-right">
       <slide-show :slides="slides" :inv="invTime"></slide-show>
@@ -44,8 +45,31 @@
     </div> -->
   </div>
 </template>
-<style scoped>
 
+<style scoped>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    .index-wrap {
+        width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .index-left {
+        float: left;
+        width: 300px;
+        text-align: left;
+    }
+    .index-right {
+        float: right;
+        width: 900px;
+    }
+    .index-left-block{
+        margin: 15px;
+        background-color: #ffffff;
+        box-shadow: 0 0 1px #ddd;
+    }
 </style>
 
 <script>
@@ -58,7 +82,13 @@ export default {
         }
     },
     created:function(){
-        axios.get('../../productList.json').then(())
+        axios.get('http://localhost:8088/api/productList')
+        .then(res=>{
+            this.productList = res.data.api_productList;
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     }
 }
 </script>
