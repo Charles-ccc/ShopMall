@@ -2,28 +2,33 @@
   "getNewsList": [
     {
       "id": 1,
-      "title": "新闻条目1新闻条目1新闻条目1新闻条目1",
-      "url": "http://starcraft.com"
+      "title": "虎扑体育NBA新闻",
+      "url": "https://voice.hupu.com/nba"
     },
     {
       "id": 2,
-      "title": "新闻条目2新闻条目2新闻条目2新闻条目2",
-      "url": "http://warcraft.com"
+      "title": "虎扑体育CBA新闻",
+      "url": "https://cba.hupu.com/"
     },
     {
       "id": 3,
-      "title": "新闻条3新闻条3新闻条3",
-      "url": "http://overwatch.com"
+      "title": "虎扑体育步行街主干道",
+      "url": "https://bbs.hupu.com/bxj"
     },
     {
       "id": 4,
-      "title": "新闻条4广告发布",
-      "url": "http://hearstone.com"
+      "title": "虎扑体育装备区",
+      "url": "http://zb.hupu.com/"
+    },
+    {
+      "id": 5,
+      "title": "虎扑体育开放区",
+      "url": "https://bbs.hupu.com/kfq"
     }
   ],
   "login": {
-    "username": "yudongdong",
-    "userId": 123123
+    "username": "liuchang",
+    "userId": 123456
   },
   "getPrice": {
     "amount": 678
@@ -39,7 +44,7 @@
         "version": "高级版",
         "period": "1年",
         "buyNum": 2,
-        "date": "2016-10-10",
+        "date": "2017-10-10",
         "amount": "500元"
       },
       {
@@ -48,7 +53,7 @@
         "version": "户外版",
         "period": "3个月",
         "buyNum": 1,
-        "date": "2016-5-2",
+        "date": "2017-12-25",
         "amount": "2200元"
       },
       {
@@ -57,7 +62,7 @@
         "version": "商铺版",
         "period": "3年",
         "buyNum": 12,
-        "date": "2016-8-3",
+        "date": "2017-12-30",
         "amount": "7890元"
       }
     ]

@@ -11,6 +11,8 @@ const portfinder = require('portfinder')
 const express = require('express')
 const app = express()
 const api_productList = require('../productList.json')
+const api_news = require('../db.json')
+const api_boardList = require('../boardList.json')
 const apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
@@ -45,6 +47,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       app.get('/api/productList', (req, res) => {
         res.json({
           api_productList
+        })
+      }),
+      app.get('/api/news', (req, res) => {
+        res.json({
+          api_news
+        })
+      }),
+      app.get('/api/boardList', (req, res) => {
+        res.json({
+          api_boardList
         })
       })
     }

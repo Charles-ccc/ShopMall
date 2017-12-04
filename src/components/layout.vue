@@ -9,7 +9,7 @@
                       <li class="nav-pile">|</li>
                       <li>注册</li>
                       <li class="nav-pile">|</li>
-                      <li>登录</li>
+                      <li>关于</li>
                   </ul>
               </div>
           </div>

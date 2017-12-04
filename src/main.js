@@ -5,6 +5,9 @@ import App from './App'
 import Router from 'vue-router'
 import Layout from './components/layout'
 import IndexPage from './pages/index'
+import axios from 'axios'
+
+Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
 Vue.use(Router)
