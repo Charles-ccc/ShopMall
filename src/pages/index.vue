@@ -9,7 +9,6 @@
           <ul>
             <li v-for="(item,index) in product.list" :key="index">
               <a :href="item.url">{{ item.name }}</a>
-              <!-- <router-link :to="item.url">{{ item.name }}</router-link> -->
               <span v-if="item.hot" class="hot-tag">HOT</span>
             </li>
           </ul>
@@ -27,12 +26,13 @@
       </div>
     </div>
     <div class="index-right">
-      <slide-show :slides="slides" :inv="invTime"></slide-show>
+     <slide-show :slides="slides"></slide-show>
       <div class="index-board-list">
         <div
         class="index-board-item"
         v-for="(item, index) in boardList" :key="index"
-        :class="[{'line-last' : index % 2 !== 0}, 'index-board-' + item.id]">
+        :class="[{'line-last' : index % 2 !== 0}, 'index-board-' + item.id]"
+        >
           <div class="index-board-item-inner" >
             <h2>{{ item.title }}</h2>
             <p>{{ item.description }}</p>
@@ -72,6 +72,7 @@
         background-color: #ffffff;
         box-shadow: 0 0 1px #ddd;
     }
+    .index-left-block a{color: #555}
     .index-left-block .hr{
         margin-bottom:20px;
     }
@@ -132,6 +133,13 @@
     .index-board-button {
         margin-top: 20px;
     }
+    .index-board-button a{
+        background-color: #4fc08d;
+        color: #fff;
+        display: inline-block;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
     .lastest-news {
         min-height: 512px;
     }
@@ -141,7 +149,7 @@
     }
     .new-item {
         display: inline-block;
-        width: 230px;
+        width: 200px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -150,38 +158,65 @@
 
 <script>
 import axios from 'axios'
-
+import slideShow from '../components/slideShow'
 export default {
+    components:{
+        slideShow
+    },
     data(){
         return{
             productList: [],
             newsList:[],
-            boardList:[]
+            boardList:[],
+            invTime: 2000,
+            slides: [
+                {
+                    src: require('../assets/slideShow/pic1.jpg'),
+                    title: 'React.js学习',
+                    href: 'detail/analysis'
+                },
+                {
+                    src: require('../assets/slideShow/pic2.jpg'),
+                    title: 'Vue.js学习',
+                    href: 'detail/count'
+                },
+                {
+                    src: require('../assets/slideShow/pic3.jpg'),
+                    title: 'ES6学习',
+                    href: 'http://xxx.xxx.com'
+                },
+                {
+                    src: require('../assets/slideShow/pic4.jpg'),
+                    title: 'HTML5学习',
+                    href: 'detail/forecast'
+                }
+            ]
         }
     },
     created:function(){
         this.$http.get('http://localhost:8088/api/productList')
-        .then(res=>{
+        .then((res)=>{
             this.productList = res.data.api_productList;
         })
-        .catch(error=>{
-            console.log(error)
+        .catch((error)=>{
+            console.log(error);
+            alert("index-left 他强任他强");
         }),
         this.$http.get('http://localhost:8088/api/news')
-        .then(res=>{
-            console.log(res.data)
+        .then((res)=>{
             this.newsList = res.data.api_news.getNewsList;
         })
-        .catch(error=>{
+        .catch((error)=>{
             console.log(error);
+            alert("index-left 他强任他强");
         }),
         this.$http.get('http://localhost:8088/api/boardList')
-        .then(res=>{
-            console.log(res.data)
-            this.boardList = res.data.api_boaedList;
+        .then((res)=>{
+            this.boardList = res.data.api_boardList;
         })
-        .catch(error=>{
+        .catch((error)=>{
             console.log(error);
+            alert("index-right 他强任他强");
         })
     }
 }

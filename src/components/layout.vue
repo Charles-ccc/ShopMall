@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
       <div class="app-head">
           <div class="app-head-inner">
               <img src="../assets/logo.png" alt="">
@@ -27,40 +27,18 @@
 
 <style scoped>
     *{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     border: 0;
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
     }
-    /* HTML5 display-role reset for older browsers */
-    article, aside, details, figcaption, figure, 
-    footer, header, hgroup, menu, nav, section {
-    display: block;
-    }
-    body {
-    line-height: 1;
-    }
-    ol, ul {
-    list-style: none;
-    }
-    blockquote, q {
-    quotes: none;
-    }
-    blockquote:before, blockquote:after,
-    q:before, q:after {
-    content: '';
-    content: none;
-    }
-    table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    }
     a {
     color: inherit;
     text-decoration: none;
     }
+    ul {list-style: none;}
     body {
         background: #f0f2f5;
         font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
@@ -98,6 +76,9 @@
     }
     .nav-pile {
     padding: 0 10px;
+    }
+    .app-content{
+        background-color: #f7f7f7;
     }
     .app-foot {
     text-align: center;

@@ -10,12 +10,27 @@ const portfinder = require('portfinder')
 
 const express = require('express')
 const app = express()
+/* const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json()) */
 const api_productList = require('../productList.json')
 const api_news = require('../db.json')
 const api_boardList = require('../boardList.json')
 const apiRoutes = express.Router()
+/* const fs = require('fs')
+apiRoutes.route('/:apiName')
+.all(function(req,res){
+  fs.readFile('../boardList','utf8',function(err,data){
+    if(err) throw err
+    var data = JSON.parse(data)
+    if(data[req.params.apiName]){
+      res.json(data[req.params.apiName])
+    }else{
+      res.send('no such api name')
+    }
+  })
+}) */
 app.use('/api', apiRoutes)
-
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
