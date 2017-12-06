@@ -1,16 +1,18 @@
 <template>
     <div class="slide-show">
         <div class="slide-img">
-            <a :href="slides[nowIndex].href">
+            <a>
                 <img :src="slides[nowIndex].src">
             </a>
         </div>
         <div class="slide-title">
             <h2>{{ slides[nowIndex].title }}</h2>
             <ul class="slide-pages">
-                <li v-for="(item,index) in slides" :key="index">
-                    <a>{{ index+1 }}</a>
+                <li @click="goto(prevIndex)">&lt;</li>
+                <li v-for="(item,index) in slides" :key="index" @click="goto(index) ">
+                    <a :class="{on: index === nowIndex}">{{ index+1 }}</a>
                 </li>
+                <li @click="goto(nextIndex)">&gt;</li>
             </ul>
         </div>
     </div>
@@ -28,6 +30,7 @@
         height: 500px;
         margin: 15px 15px 15px 0;
         position: relative;
+        overflow: hidden;
     }
     .slide-title{
         width: 100%;
@@ -36,18 +39,28 @@
         background-color:rgba(0, 0, 0, .7);
         position: relative;;
         left: 0px;
-        top: -26px;
+        top: -32px;
     }
     .slide-title h2{
         float: left;
-        font-size: 16px;
+        font-size: 14px;
         color: #f3f3f3;
         padding-left: 18px;
     }
     .slide-pages{
         float: right;
     }
-    .slide-pages li{float: left;color: #f3f3f3;padding: 0 8px;height: 22px;line-height: 22px;}
+    .slide-pages li{
+        float: left;
+        color: #f3f3f3;
+        padding: 0 8px;
+        height: 22px;
+        line-height: 22px;
+        cursor: pointer;
+    }
+    .slide-pages li .on {
+        text-decoration: underline;
+    }
 </style>
 
 <script>
@@ -61,6 +74,27 @@ export default {
         slides:{
             type:Array,
             default:[]
+        }
+    },
+    methods:{
+        goto(index){
+            this.nowIndex = index
+        }
+    },
+    computed:{
+        prevIndex(){
+            if (this.nowIndex === 0) {
+                return this.slides.length -1
+            }else{
+                return this.slides -1
+            }
+        },
+        nextIndex(){
+            if (this.nowIndex === this.slides.length -1) {
+                return 0
+            }else{
+                return this.nowIndex + 1
+            }
         }
     }
 }
