@@ -168,7 +168,7 @@ export default {
             productList: [],
             newsList:[],
             boardList:[],
-            invTime: 2000,
+            invTime: 3000,
             slides: [
                 {
                     src: require('../assets/slideShow/pic1.jpg'),

@@ -1,20 +1,23 @@
 <template>
-    <div class="slide-show">
+    <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
         <div class="slide-img">
             <a>
-                <img :src="slides[nowIndex].src">
+              <transition name="slide-trans">
+                <img :src="slides[nowIndex].src" v-if="isShow">
+              </transition>
+              <transition name="slide-trans-old">
+                <img :src="slides[nowIndex].src" v-if="!isShow">
+              </transition>
             </a>
         </div>
-        <div class="slide-title">
-            <h2>{{ slides[nowIndex].title }}</h2>
-            <ul class="slide-pages">
-                <li @click="goto(prevIndex)">&lt;</li>
-                <li v-for="(item,index) in slides" :key="index" @click="goto(index) ">
-                    <a :class="{on: index === nowIndex}">{{ index+1 }}</a>
-                </li>
-                <li @click="goto(nextIndex)">&gt;</li>
-            </ul>
-        </div>
+        <h2>{{ slides[nowIndex].title }}</h2>
+        <ul class="slide-pages">
+            <li @click="goto(prevIndex)">&lt;</li>
+            <li v-for="(item,index) in slides" :key="index" @click="goto(index) ">
+                <a :class="{on: index === nowIndex}">{{ index+1 }}</a>
+            </li>
+            <li @click="goto(nextIndex)">&gt;</li>
+        </ul>
     </div>
 </template>
 
@@ -24,6 +27,16 @@
         padding: 0px;
         list-style: none;
         text-decoration: none;
+    }
+    .slide-trans-enter-active {
+      transition: all .5s;
+    }
+    .slide-trans-enter {
+      transform: translateX(900px);
+    }
+    .slide-trans-old-leave-active {
+      transition: all .5s;
+      transform: translateX(-900px);
     }
     .slide-show{
         width: 900px;
@@ -67,19 +80,40 @@
 export default {
     data(){
         return{
-           nowIndex:0
+           nowIndex:0,
+           isShow:true
         }
     },
     props:{
         slides:{
             type:Array,
             default:[]
+        },
+        inv:{
+          type: Number,
+          default: 2000
         }
     },
     methods:{
         goto(index){
+          this.isShow = false,
+          setTimeout( () => {
+            this.isShow = true
             this.nowIndex = index
+          }, 10)
+
+        },
+        runInv(){
+          this.invId = setInterval(() => {
+            this.goto(this.nextIndex)
+          },this.inv)
+        },
+        clearInv(){
+          clearInterval(this.invId)
         }
+    },
+    mounted () {
+      this.runInv();
     },
     computed:{
         prevIndex(){
