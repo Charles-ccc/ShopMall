@@ -10,14 +10,16 @@
               </transition>
             </a>
         </div>
-        <h2>{{ slides[nowIndex].title }}</h2>
-        <ul class="slide-pages">
-            <li @click="goto(prevIndex)">&lt;</li>
-            <li v-for="(item,index) in slides" :key="index" @click="goto(index) ">
-                <a :class="{on: index === nowIndex}">{{ index+1 }}</a>
-            </li>
-            <li @click="goto(nextIndex)">&gt;</li>
-        </ul>
+        <div class="slide-title">
+            <h2>{{ slides[nowIndex].title }}</h2>
+            <ul class="slide-pages">
+                <li @click="goto(prevIndex)">&lt;</li>
+                <li v-for="(item,index) in slides" :key="index" @click="goto(index) ">
+                    <a :class="{on: index === nowIndex}">{{ index+1 }}</a>
+                </li>
+                <li @click="goto(nextIndex)">&gt;</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -100,8 +102,8 @@ export default {
           setTimeout( () => {
             this.isShow = true
             this.nowIndex = index
+            this.$emit('onchange',index)
           }, 10)
-
         },
         runInv(){
           this.invId = setInterval(() => {

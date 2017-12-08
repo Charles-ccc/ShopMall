@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="index-right">
-     <slide-show :slides="slides"></slide-show>
+     <slide-show :slides="slides" @onchange="jiantingOnchange"></slide-show>
       <div class="index-board-list">
         <div
         class="index-board-item"
@@ -191,6 +191,11 @@ export default {
                     href: 'detail/forecast'
                 }
             ]
+        }
+    },
+    methods:{
+        jiantingOnchange(){
+            console.log('jiantingOnchange run!')
         }
     },
     created:function(){

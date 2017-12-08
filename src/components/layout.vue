@@ -9,7 +9,7 @@
                       <li class="nav-pile">|</li>
                       <li>注册</li>
                       <li class="nav-pile">|</li>
-                      <li>关于</li>
+                      <li @click="aboutClick">关于</li>
                   </ul>
               </div>
           </div>
@@ -22,6 +22,9 @@
       <div class="app-foot">
           <p>© 2017 LiuChang Coding</p>
       </div>
+      <my-dialog :is-show="isShowDialog" @on-close="closeDialog">
+          <p>Empty-Others</p>
+      </my-dialog>
   </div>
 </template>
 
@@ -101,10 +104,22 @@
 </style>
 
 <script>
+import Dialog from './base/dialog'
     export default {
+        components:{
+            Mydialog:Dialog
+        },
         data(){
             return{
-                msg:"Hello World"
+                isShowDialog: false
+            }
+        },
+        methods:{
+            aboutClick(){
+                this.isShowDialog = true
+            },
+            closeDialog(){
+                this.isShowDialog = false;
             }
         }
     }
