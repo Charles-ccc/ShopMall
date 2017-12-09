@@ -5,9 +5,9 @@
               <img src="../assets/logo.png" alt="">
               <div class="head-nav">
                   <ul class="nav-list">
-                      <li>登录</li>
+                      <li @click="logClick">登录</li>
                       <li class="nav-pile">|</li>
-                      <li>注册</li>
+                      <li @click="regClick">注册</li>
                       <li class="nav-pile">|</li>
                       <li @click="aboutClick">关于</li>
                   </ul>
@@ -22,9 +22,15 @@
       <div class="app-foot">
           <p>© 2017 LiuChang Coding</p>
       </div>
-      <my-dialog :is-show="isShowDialog" @on-close="closeDialog">
-          <p>Empty-Others</p>
-      </my-dialog>
+      <Mydialog :is-show="isShowAboutDialog" @on-close="closeDialog('isShowAboutDialog')">
+          <p>About-Others</p>
+      </Mydialog>
+      <Mydialog :is-show="isShowLogDialog" @on-close="closeDialog('isShowLogDialog')">
+          <p>Log-Others</p>
+      </Mydialog>
+      <Mydialog :is-show="isShowRegDialog" @on-close="closeDialog('isShowRegDialog')">
+          <p>Reg-Others</p>
+      </Mydialog>
   </div>
 </template>
 
@@ -107,19 +113,27 @@
 import Dialog from './base/dialog'
     export default {
         components:{
-            Mydialog:Dialog
+            Mydialog:Dialog,
         },
         data(){
             return{
-                isShowDialog: false
+                isShowAboutDialog: false,
+                isShowLogDialog: false,
+                isShowRegDialog: false
             }
         },
         methods:{
             aboutClick(){
-                this.isShowDialog = true
+                this.isShowAboutDialog = true
             },
-            closeDialog(){
-                this.isShowDialog = false;
+            regClick(){
+                this.isShowRegDialog = true
+            },
+            logClick(){
+                this.isShowLogDialog = true
+            },
+            closeDialog(attr){
+                this[attr] = false;
             }
         }
     }

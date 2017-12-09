@@ -5,7 +5,7 @@
                 <transition name="drop">
                     <div class="dialog-content" v-if="isShow">
                         <p class="dialog-close" @click="closeMyself">X</p>
-                        <slot name="empty">Empty</slot>
+                        <slot>Empty</slot>
                     </div>
                 </transition>
             </div>
@@ -14,19 +14,33 @@
 </template>
 
 <style scoped>
+    .drop-enter-active {
+        transition: all .5s ease;
+    }
+    .drop-leave-active {
+        transition: all .3s ease;
+    }
+    .drop-enter {
+        transform: translateY(-500px);
+    }
+    .drop-leave-active {
+        transform: translateY(-500px);
+    }
     .dialog-wrap{
         position: fixed;
         width: 100%;
-        height:100%
+        height:100%;
+        overflow: hidden;
     }
     .dialog-cover{
         position: fixed;
         top: 0;
         left: 0;
         z-index: 9;
-        background-color:rgba(0, 0, 0, .3);
+        background-color:rgba(0, 0, 0, .5);
         width: 100%;
         height: 100%;
+        overflow: hidden;
     }
     .dialog-content{
         width: 50%;
@@ -38,6 +52,7 @@
         padding: 3%;
         border: 2px solid #464068;
         line-height: 2;
+        background-color: #f2f2f2;
     }
     .dialog-close{
         position: absolute;

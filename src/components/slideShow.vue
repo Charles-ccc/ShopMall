@@ -10,16 +10,14 @@
               </transition>
             </a>
         </div>
-        <div class="slide-title">
-            <h2>{{ slides[nowIndex].title }}</h2>
-            <ul class="slide-pages">
-                <li @click="goto(prevIndex)">&lt;</li>
-                <li v-for="(item,index) in slides" :key="index" @click="goto(index) ">
-                    <a :class="{on: index === nowIndex}">{{ index+1 }}</a>
-                </li>
-                <li @click="goto(nextIndex)">&gt;</li>
-            </ul>
-        </div>
+        <h2>{{ slides[nowIndex].title }}</h2>
+        <ul class="slide-pages">
+            <li @click="goto(prevIndex)">&lt;</li>
+            <li v-for="(item,index) in slides" :key="index" @click="goto(index) ">
+                <a :class="{on: index === nowIndex}">{{ index+1 }}</a>
+            </li>
+            <li @click="goto(nextIndex)">&gt;</li>
+        </ul>
     </div>
 </template>
 
@@ -47,30 +45,30 @@
         position: relative;
         overflow: hidden;
     }
-    .slide-title{
+    .slide-show h2{
         width: 100%;
-        height: 22px;
-        line-height: 22px;
+        height: 100%;
         background-color:rgba(0, 0, 0, .7);
-        position: relative;;
-        left: 0px;
-        top: -32px;
-    }
-    .slide-title h2{
-        float: left;
+        position: absolute;;
+        bottom: 0;
+        height: 30px;
+        line-height: 30px;
+        text-align: left;
+        padding-left: 15px;
         font-size: 14px;
         color: #f3f3f3;
-        padding-left: 18px;
     }
     .slide-pages{
-        float: right;
+        position: absolute;
+        bottom: 5px;
+        right: 15px;
     }
     .slide-pages li{
-        float: left;
         color: #f3f3f3;
-        padding: 0 8px;
-        height: 22px;
-        line-height: 22px;
+        display: inline-block;
+        padding: 0 10px;
+        cursor: pointer;
+        color: #fff;
         cursor: pointer;
     }
     .slide-pages li .on {
