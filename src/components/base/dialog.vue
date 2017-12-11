@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="dialog-wrap">
-            <div class="dialog-cover" v-if="isShow" @click="closeMyself">
+            <div class="dialog-cover" v-if="isShow">
                 <transition name="drop">
                     <div class="dialog-content" v-if="isShow">
                         <p class="dialog-close" @click="closeMyself">X</p>
@@ -30,7 +30,6 @@
         position: fixed;
         width: 100%;
         height:100%;
-        overflow: hidden;
     }
     .dialog-cover{
         position: fixed;
@@ -40,16 +39,14 @@
         background-color:rgba(0, 0, 0, .5);
         width: 100%;
         height: 100%;
-        overflow: hidden;
     }
     .dialog-content{
         width: 50%;
-        height: 50%;
         position: fixed;
         top: 25%;
         left: 25%;
         z-index: 11;
-        padding: 3%;
+        padding: 1%;
         border: 2px solid #464068;
         line-height: 2;
         background-color: #f2f2f2;
@@ -72,11 +69,6 @@ export default {
         isShow:{
             type:Boolean,
             default:false
-        }
-    },
-    data(){
-        return{
-
         }
     },
     methods:{
