@@ -5,6 +5,12 @@ import App from './App'
 import Router from 'vue-router'
 import Layout from './components/layout'
 import IndexPage from './pages/index'
+import DetailPage from './pages/detail'
+import DetailAnaPage from './pages/detail/analysis'
+import DetailCouPage from './pages/detail/count'
+import DetailForPage from './pages/detail/forecast'
+import DetailPubPage from './pages/detail/publish'
+
 import axios from 'axios'
 
 Vue.prototype.$http = axios
@@ -16,6 +22,28 @@ let router = new Router({
     {
       path: "/",
       component: IndexPage
+    },
+    {
+      path: "/detail",
+      component: DetailPage,
+      children:[
+        {
+          path: 'analysis',
+          component: DetailAnaPage
+        },
+        {
+          path: 'count',
+          component: DetailCouPage
+        },
+        {
+          path: 'forecast',
+          component: DetailForPage
+        },
+        {
+          path: 'publish',
+          component: DetailPubPage
+        }
+      ]
     }
   ]
 })
