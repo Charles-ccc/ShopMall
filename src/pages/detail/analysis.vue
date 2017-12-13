@@ -95,5 +95,10 @@ export default {
 </script>
 
 <style scoped>
-
+    .sales-board-des p,li{
+        font-size: 16px;
+        color: #555;
+        text-indent: 2em;
+        padding-left: 10px;
+    }
 </style>

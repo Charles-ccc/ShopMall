@@ -183,12 +183,12 @@ export default {
                 {
                     src: require('../assets/slideShow/pic3.jpg'),
                     title: 'ES6学习',
-                    href: 'http://xxx.xxx.com'
+                    href: 'detail/forecast'
                 },
                 {
                     src: require('../assets/slideShow/pic4.jpg'),
                     title: 'HTML5学习',
-                    href: 'detail/forecast'
+                    href: 'detail/pubilsh'
                 }
             ]
         }

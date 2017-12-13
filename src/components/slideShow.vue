@@ -1,7 +1,7 @@
 <template>
     <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
         <div class="slide-img">
-            <a>
+            <a :href="slides[nowIndex].href">
               <transition name="slide-trans">
                 <img :src="slides[nowIndex].src" v-if="isShow">
               </transition>
