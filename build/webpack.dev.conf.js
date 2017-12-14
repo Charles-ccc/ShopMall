@@ -15,6 +15,7 @@ const api_productList = require('../productList.json')
 const api_news = require('../db.json')
 const api_boardList = require('../boardList.json')
 const api_productsDetail = require('../productsDetail.json')
+const api_version = require('../version.json')
 const apiRoutes = express.Router()
 
 app.use('/api', apiRoutes)
@@ -65,6 +66,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         res.json({
           api_boardList
         })
+      }),
+      app.get('/api/version', (req, res) => {
+          res.json({
+            api_version
+          })
       })
     }
   },

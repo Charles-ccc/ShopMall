@@ -1,12 +1,5 @@
 [
     {
-        "title": "开放产品",
-        "description": "开放产品是一款开放产品",
-        "id": "car",
-        "toKey": "analysis",
-        "saleout": false
-    },
-    {
         "title": "品牌营销",
         "description": "品牌营销帮助你的产品更好地找到定位",
         "id": "earth",
@@ -19,6 +12,13 @@
         "id": "loud",
         "toKey": "forecast",
         "saleout": true
+    },
+    {
+        "title": "开放产品",
+        "description": "开放产品是一款开放产品",
+        "id": "car",
+        "toKey": "analysis",
+        "saleout": false
     },
     {
         "title": "勇攀高峰",

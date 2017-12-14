@@ -19,6 +19,7 @@
               </div>
               <div class="sales-board-line-right">
                   <!-- <v-selection :selections="buyTypes" @on-change="onParamChange('buyType', $event)"></v-selection> -->
+                  <v-selection :selections="buyTypes"></v-selection>
               </div>
           </div>
           <div class="sales-board-line">
@@ -39,6 +40,7 @@
                   <!-- <v-mul-chooser
                   :selections="versionList"
                   @on-change="onParamChange('versions', $event)"></v-mul-chooser> -->
+                  <v-mul-chooser :selections="versionList"></v-mul-chooser>
               </div>
           </div>
           <div class="sales-board-line">
@@ -85,20 +87,38 @@
 </template>
 
 <script>
-export default {
-  data() {
-      return {
+import VSelection from '../../components/base/selection'
+import VMulChooser from '../../components/base/multiplyChooser'
 
-      }
+export default {
+  components:{
+    VSelection,
+    VMulChooser
+  },
+  data() {
+    return {
+      buyTypes: []
+    }
+  },
+  created(){
+    this.$http.get("http://localhost:8088/api/version")
+    .then( (res) => {
+        this.buyTypes = res.data.api_version.buyTypes,
+        console.log(res.data.api_version.versionList)
+        this.versionList = res.data.api_version.versionList
+    })
+    .catch( (error) => {
+        console.log(error)
+    })
   }
 }
 </script>
 
 <style scoped>
-    .sales-board-des p,li{
-        font-size: 16px;
-        color: #555;
-        text-indent: 2em;
-        padding-left: 10px;
-    }
+  .sales-board-des p,li{
+      font-size: 16px;
+      color: #555;
+      text-indent: 2em;
+      padding-left: 10px;
+  }
 </style>
