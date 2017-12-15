@@ -35,7 +35,7 @@
     created:function () {
       this.$http.get("http://localhost:8088/api/productsDetail")
       .then((res) => {
-        console.log(res.data.api_productsDetail)
+        // console.log(res.data.api_productsDetail)
         this.productsDetail = res.data.api_productsDetail
       })
       .catch((error) => {

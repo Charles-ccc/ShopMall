@@ -1,7 +1,7 @@
 <template>
     <div class="selection-component">
         <div class="selection-show" @click="toggleDrop">
-            <span>{{ selections[nowIndex].label}}</span>
+            <span>{{ selections[nowIndex].label }}</span>
             <div class="arrow"></div>
         </div>
         <div class="selection-list" v-if="isDrop">
@@ -13,12 +13,11 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
     props:{
         selections:{
-            type:Array,
-            default:[{
+            type: Array,
+            default: [{
                 label: 'test',
                 value: 0
             }]
@@ -29,6 +28,9 @@ export default {
             isDrop:false,
             nowIndex: 0
         }
+    },
+    mounted () {
+        console.log(this.selections.length)
     },
     methods:{
         toggleDrop(){

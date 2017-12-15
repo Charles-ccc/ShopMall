@@ -97,14 +97,15 @@ export default {
   },
   data() {
     return {
-      buyTypes: []
+      buyTypes: [],
+      versionList:[]
     }
   },
   created(){
     this.$http.get("http://localhost:8088/api/version")
     .then( (res) => {
         this.buyTypes = res.data.api_version.buyTypes,
-        console.log(res.data.api_version.versionList)
+        // console.log(res.data.api_version.versionList)
         this.versionList = res.data.api_version.versionList
     })
     .catch( (error) => {

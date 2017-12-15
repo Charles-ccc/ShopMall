@@ -1,9 +1,7 @@
 <template>
   <div class="chooser-component">
       <ul class="chooser-list">
-          <li>11</li>
-          <li>22</li>
-          <li>33</li>
+          <li v-for="(item,index) in selections" :key="index" :title="item.label" @click="toggleSelection(index)" :class="{ active:checkActive(index) }">{{ item.label }}</li>
       </ul>
   </div>
 </template>
@@ -11,19 +9,35 @@
 <script>
 import _ from 'lodash'
 export default {
-  props: {
-      selection:{
-          type:Array,
-          default:[{
-              label:'test',
-              value:0
-          }]
-      }
-  },
+    props: {
+        selections:{
+            type:Array,
+            default:[{
+                label:'test',
+                value:0
+            }]
+        }
+    },
     data(){
         return {
             nowIndex:[0]
         }
+    },
+    methods:{
+        checkActive(index){
+            return this.nowIndex.indexOf(index) !== -1
+        },
+        toggleSelection (index){
+            if(this.nowIndex.indexOf(index) ===-1){
+                this.nowIndex.push(index)
+            }else{
+                this.nowIndex = _.remove(this.nowIndex,
+                (idx) =>{
+                    return idx !== index
+                })
+            }
+        }
+
     }
 }
 </script>
@@ -33,7 +47,7 @@ export default {
     position: relative;
     display: inline-block;
 }
-.chooser-list{
+.chooser-list li{
     display: inline-block;
     border: 1px solid #e3e3e3;
     height: 25px;
