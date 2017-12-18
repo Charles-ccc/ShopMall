@@ -13,7 +13,7 @@ export default {
   props: {
     max: {
       type: Number,
-      default: 9
+      default: 20
     },
     min: {
       type: Number,
@@ -41,7 +41,7 @@ export default {
     fixNumber(){
       let fix
       if(typeof this.number === 'string'){
-        fix = Number(this.number.repalce(/\D/g, ''))
+        fix = Number(this.number.replace(/\D/g, '1'))
       }else{
         fix = this.number
       }
@@ -49,6 +49,11 @@ export default {
         fix = this.min
       }
       this.number = fix
+    }
+  },
+  watch:{
+    number (){
+      this.$emit('on-change',this.number)
     }
   }
 }
