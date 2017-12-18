@@ -89,11 +89,13 @@
 <script>
 import VSelection from '../../components/base/selection'
 import VMulChooser from '../../components/base/multiplyChooser'
+import VCounter from '../../components/base/counter'
 
 export default {
   components:{
     VSelection,
-    VMulChooser
+    VMulChooser,
+    VCounter
   },
   data() {
     return {

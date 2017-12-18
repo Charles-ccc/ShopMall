@@ -1,16 +1,56 @@
 <template>
   <div class="counter-component">
-      <div class="counter-btn"> - </div>
+      <div class="counter-btn" @click="minus"> - </div>
       <div class="counter-show">
-          <input type="text">
+          <input type="text" @keyup="fixNumber" v-model="number">
       </div>
-      <div class="counter-btn"> + </div>
+      <div class="counter-btn" @click="add"> + </div>
   </div>
 </template>
 
 <script>
 export default {
-  
+  props: {
+    max: {
+      type: Number,
+      default: 9
+    },
+    min: {
+      type: Number,
+      default: 1
+    }
+  },
+  data(){
+    return{
+      number: this.min
+    }
+  },
+  methods: {
+    add () { 
+      if(this.number >= this.max){
+        return
+      }
+      this.number ++
+    },
+    minus () {
+      if(this.number <= this.min){
+        return
+      }
+      this.number --
+    },
+    fixNumber(){
+      let fix
+      if(typeof this.number === 'string'){
+        fix = Number(this.number.repalce(/\D/g, ''))
+      }else{
+        fix = this.number
+      }
+      if(fix >= this.max || fiv <= this.min){
+        fix = this.min
+      }
+      this.number = fix
+    }
+  }
 }
 </script>
 
