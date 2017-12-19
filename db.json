@@ -1,70 +1,68 @@
 {
-  "getNewsList": [
-    {
-      "id": 1,
-      "title": "虎扑体育NBA新闻",
-      "url": "https://voice.hupu.com/nba"
+    "getNewsList": [{
+            "id": 1,
+            "title": "虎扑体育NBA新闻",
+            "url": "https://voice.hupu.com/nba"
+        },
+        {
+            "id": 2,
+            "title": "虎扑体育CBA新闻",
+            "url": "https://cba.hupu.com/"
+        },
+        {
+            "id": 3,
+            "title": "虎扑体育步行街主干道",
+            "url": "https://bbs.hupu.com/bxj"
+        },
+        {
+            "id": 4,
+            "title": "虎扑体育装备区",
+            "url": "http://zb.hupu.com/"
+        },
+        {
+            "id": 5,
+            "title": "虎扑体育开放区",
+            "url": "https://bbs.hupu.com/kfq"
+        }
+    ],
+    "login": {
+        "username": "liuchang",
+        "userId": 123456
     },
-    {
-      "id": 2,
-      "title": "虎扑体育CBA新闻",
-      "url": "https://cba.hupu.com/"
+    "getPrice": {
+        "amount": 678
     },
-    {
-      "id": 3,
-      "title": "虎扑体育步行街主干道",
-      "url": "https://bbs.hupu.com/bxj"
+    "createOrder": {
+        "orderId": "1a2b3c"
     },
-    {
-      "id": 4,
-      "title": "虎扑体育装备区",
-      "url": "http://zb.hupu.com/"
-    },
-    {
-      "id": 5,
-      "title": "虎扑体育开放区",
-      "url": "https://bbs.hupu.com/kfq"
+    "getOrderList": {
+        "list": [{
+                "orderId": "ddj123",
+                "product": "数据统计",
+                "version": "高级版",
+                "period": "1年",
+                "buyNum": 2,
+                "date": "2017-10-10",
+                "amount": "500元"
+            },
+            {
+                "orderId": "yuj583",
+                "product": "流量分析",
+                "version": "户外版",
+                "period": "3个月",
+                "buyNum": 1,
+                "date": "2017-12-25",
+                "amount": "2200元"
+            },
+            {
+                "orderId": "pmd201",
+                "product": "广告发布",
+                "version": "商铺版",
+                "period": "3年",
+                "buyNum": 12,
+                "date": "2017-12-30",
+                "amount": "7890元"
+            }
+        ]
     }
-  ],
-  "login": {
-    "username": "liuchang",
-    "userId": 123456
-  },
-  "getPrice": {
-    "amount": 678
-  },
-  "createOrder": {
-    "orderId": "6djk979"
-  },
-  "getOrderList": {
-    "list": [
-      {
-        "orderId": "ddj123",
-        "product": "数据统计",
-        "version": "高级版",
-        "period": "1年",
-        "buyNum": 2,
-        "date": "2017-10-10",
-        "amount": "500元"
-      },
-      {
-        "orderId": "yuj583",
-        "product": "流量分析",
-        "version": "户外版",
-        "period": "3个月",
-        "buyNum": 1,
-        "date": "2017-12-25",
-        "amount": "2200元"
-      },
-      {
-        "orderId": "pmd201",
-        "product": "广告发布",
-        "version": "商铺版",
-        "period": "3年",
-        "buyNum": 12,
-        "date": "2017-12-30",
-        "amount": "7890元"
-      }
-    ]
-  }
 }

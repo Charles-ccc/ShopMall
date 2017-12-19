@@ -49,7 +49,7 @@
                   总价：
               </div>
               <div class="sales-board-line-right">
-                  100元
+                  {{ price }}元
               </div>
           </div>
           <div class="sales-board-line">
@@ -92,6 +92,7 @@ import VSelection from '../../components/base/selection'
 import VMulChooser from '../../components/base/multiplyChooser'
 import VCounter from '../../components/base/counter'
 import VChooser from '../../components/base/chooser'
+import _ from "lodash"
 
 export default {
   components:{
@@ -117,7 +118,6 @@ export default {
         this.buyTypes = res.data.api_version.buyTypes,
         this.versionList = res.data.api_version.versionList,
         this.periodList = res.data.api_version.periodList
-        console.log(res.data.api_version.periodList)
     })
     .catch( (error) => {
         console.log(error)
@@ -126,8 +126,21 @@ export default {
   methods: {
       onParamChange(attr,val){
           this[attr] =val
-          console.log(attr,this[attr]);
+          //console.log(attr,this[attr]);
+          this.getPrice()
           
+      },
+      getPrice (){
+          let reqParams = {
+              buyNumber: this.butNum,
+              buyType: this.buyType.value,
+              period: this.period.value,
+              version: buyVersionsArray.join(',')
+          }
+          this.$http.get('http://localhost:8088/api/db', reqParams)
+          .then( (res) =>{
+              console.log(res.data.getPrice)
+          })
       }
   }
 }
