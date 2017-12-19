@@ -10,7 +10,7 @@
             购买数量：
           </div>
           <div class="sales-board-line-right">
-            <v-counter></v-counter>
+            <v-counter @on-change="onParamChange('buyNum', $event)"></v-counter>
           </div>
         </div>
         <div class="sales-board-line">
@@ -18,8 +18,8 @@
                   产品类型：
               </div>
               <div class="sales-board-line-right">
-                  <!-- <v-selection :selections="buyTypes" @on-change="onParamChange('buyType', $event)"></v-selection> -->
-                  <v-selection :selections="buyTypes"></v-selection>
+                  <v-selection :selections="buyTypes" @on-change="onParamChange('buyType', $event)"></v-selection>
+                  <!-- <v-selection :selections="buyTypes"></v-selection> -->
               </div>
           </div>
           <div class="sales-board-line">
@@ -27,9 +27,10 @@
                   有效时间：
               </div>
               <div class="sales-board-line-right">
-                  <!-- <v-chooser
+                  <v-chooser
                   :selections="periodList"
-                  @on-change="onParamChange('period', $event)"></v-chooser> -->
+                  @on-change="onParamChange('period', $event)"></v-chooser>
+                  <!-- <v-chooser :selections="periodList"></v-chooser> -->
               </div>
           </div>
           <div class="sales-board-line">
@@ -37,10 +38,10 @@
                   产品版本：
               </div>
               <div class="sales-board-line-right">
-                  <!-- <v-mul-chooser
+                  <v-mul-chooser
                   :selections="versionList"
-                  @on-change="onParamChange('versions', $event)"></v-mul-chooser> -->
-                  <v-mul-chooser :selections="versionList"></v-mul-chooser>
+                  @on-change="onParamChange('versions', $event)"></v-mul-chooser>
+                  <!-- <v-mul-chooser :selections="versionList"></v-mul-chooser> -->
               </div>
           </div>
           <div class="sales-board-line">
@@ -90,29 +91,44 @@
 import VSelection from '../../components/base/selection'
 import VMulChooser from '../../components/base/multiplyChooser'
 import VCounter from '../../components/base/counter'
+import VChooser from '../../components/base/chooser'
 
 export default {
   components:{
     VSelection,
     VMulChooser,
-    VCounter
+    VCounter,
+    VChooser
   },
   data() {
     return {
+      buyNum: 0,
+      buyType: {},
+      versions:[],
+      period: {},
       buyTypes: [],
-      versionList:[]
+      versionList:[],
+      periodList:[]
     }
   },
   created(){
     this.$http.get("http://localhost:8088/api/version")
     .then( (res) => {
         this.buyTypes = res.data.api_version.buyTypes,
-        // console.log(res.data.api_version.versionList)
-        this.versionList = res.data.api_version.versionList
+        this.versionList = res.data.api_version.versionList,
+        this.periodList = res.data.api_version.periodList
+        console.log(res.data.api_version.periodList)
     })
     .catch( (error) => {
         console.log(error)
     })
+  },
+  methods: {
+      onParamChange(attr,val){
+          this[attr] =val
+          console.log(attr,this[attr]);
+          
+      }
   }
 }
 </script>
@@ -124,4 +140,24 @@ export default {
       text-indent: 2em;
       padding-left: 10px;
   }
+  .chooser-component {
+  position: relative;
+  display: inline-block;
+}
+.chooser-list li{
+  display: inline-block;
+  border: 1px solid #e3e3e3;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 8px;
+  margin-right: 5px;
+  border-radius: 3px;
+  text-align: center;
+  cursor: pointer;
+}
+.chooser-list li.active {
+  border-color: #4fc08d;
+  background: #4fc08d;
+  color: #fff;
+}
 </style>

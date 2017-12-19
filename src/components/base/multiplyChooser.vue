@@ -30,14 +30,18 @@ export default {
         toggleSelection (index){
             if(this.nowIndex.indexOf(index) ===-1){
                 this.nowIndex.push(index)
-            }else{
+            }
+            else{
                 this.nowIndex = _.remove(this.nowIndex,
                 (idx) =>{
                     return idx !== index
                 })
             }
+            let nowObjArray = _.map( this.nowIndex, (idx) =>{
+                return this.selections[idx]
+            })
+            this.$emit("on-change", nowObjArray)
         }
-
     }
 }
 </script>

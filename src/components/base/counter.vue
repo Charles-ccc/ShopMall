@@ -73,8 +73,8 @@ export default {
   border: none;
   border-top: 1px solid #e3e3e3;
   border-bottom: 1px solid #e3e3e3;
-  height: 23px;
-  line-height: 23px;
+  height: 25px;
+  line-height: 25px;
   width: 30px;
   outline: none;
   text-indent: 4px;
